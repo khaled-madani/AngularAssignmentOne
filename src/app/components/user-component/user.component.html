@@ -1,0 +1,74 @@
+
+
+<h1 [ngClass]="'barcelona'">barcelona <img src="./assets/barcelona.png" alt="barcelona" width="50"></h1>
+<div [ngClass]="'container'">
+  <div [ngClass]="'tableClass'">
+    <table >
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>name</th>
+          <th>birthdate</th>
+          <th>email</th>
+          <th>phone</th>
+          <th>address</th>
+          <th>actions
+            <button [ngClass]="'add'" (click)="clickAddBut()">Add</button>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of arrayOfUser;let index = index">
+          <td>{{ item.id }}</td>
+          <td>{{ item.name.firstname }} {{ item.name.lastname }}</td>
+          <td>{{ item.birthdate }}</td>
+          <td>{{ item.email }}</td>
+          <td>{{ item.phone }}</td>
+          <td>{{ item.address }}</td>
+          <td>
+            <button [ngClass]="'edit'" (click)="editItem(index)">Edit</button>
+            <button [ngClass]="'delete'" (click)="deleteItem(index)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div [ngClass]="'formClass'" *ngIf="isShowForm">
+    <div *ngIf="errorMassage" [ngClass]="'error'">
+      Pleace fill all input
+    </div>
+    <div>
+      <label for="">ID</label>
+      <input type="text" [placeholder]="'Enter Your ID...'" [(ngModel)]="per1.id">
+    </div>
+    <div>
+      <label for="">FirstName</label>
+      <input type="text" [placeholder]="'Enter Your FirstName...'" [(ngModel)]="per1.name.firstname">
+    </div>
+    <div>
+      <label for="">LastName</label>
+    <input type="text" [placeholder]="'Enter Your LastName...'" [(ngModel)]="per1.name.lastname">
+    </div>
+    <div>
+      <label for="">Birthdate</label>
+    <input type="text" [placeholder]="'Enter Your Birthdate...'" [(ngModel)]="per1.birthdate">
+    </div>
+    <div>
+      <label for="">Email</label>
+      <input type="text" [placeholder]="'Enter Your Email...'" [(ngModel)]="per1.email">
+    </div>
+    <div>
+      <label for="">Phone</label>
+      <input type="text" [placeholder]="'Enter Your Phone...'" [(ngModel)]="per1.phone">
+    </div>
+    <div>
+    <label for="">Address</label>
+    <input type="text" [placeholder]="'Enter Your Address...'" [(ngModel)]="per1.address">
+    </div>
+    <div>
+      <button [ngClass]="'create'" (click)="createItem()" *ngIf="onclickAdd">Create</button>
+      <button [ngClass]="'create'" (click)="saveItem()" *ngIf="!onclickAdd">Update</button>
+    </div>
+  </div>
+</div>
+
